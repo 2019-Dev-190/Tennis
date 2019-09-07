@@ -1,0 +1,40 @@
+/* CSS styles for Tennis Game */
+
+.tennisBg {
+  background: #fff;
+  background-image: url("../images/tennis.png");
+  height: 650px;
+  background-size: cover;
+  overflow: hidden;
+}
+.playerHeading {
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff;
+}
+.THeading {
+  padding: 0;
+  margin: 10px 0px;
+  color: #fff;
+  text-align: center;
+  font-size: 34px;
+}
+.player1 {
+  height: 100px;
+  background-image: url("../images/left.png");
+  background-size: cover;
+  cursor: pointer;
+  width: 100px;
+}
+
+.tennisBg h1 {
+  text-align: center;
+  color: #ffe72e;
+}
+
+.playerBox {
+  display: flex;
+  margin: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

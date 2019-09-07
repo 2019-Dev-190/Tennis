@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
-import './App.css';
+import './assets/css/gameTennis.css';
+import FirstPlayer from './components/firstPlayer/firstPlayer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <h1>Welcome to Tennis</h1>
+        <div className="tennisBg">
+          <h2 className="THeading">Let's Play Tennis</h2>
+          <div className="playerBox">
+            <FirstPlayer />
+          </div>
+        </div>
       </div>
     );
   }
