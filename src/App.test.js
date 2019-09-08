@@ -6,31 +6,50 @@ import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FirstPlayer from './components/firstPlayer/firstPlayer';
 import SecondPlayer from './components/secondPlayer/secondPlayer';
+import ScoreBoard from './components/scoreBoard/scoreBoard';
 
 configure({ adapter: new Adapter() });
 
 
-describe('App', ()=>{
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+describe('App', () => {
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
+  });
 
-it('handle first player first ball call "updateScore" prop on button click', () => {
-  const updateScore = jest.fn();
-  const button = shallow((<FirstPlayer updateScore={updateScore} />));
-  button.find('.player1').props().onClick();
-  expect(updateScore).toHaveBeenCalled();
-  expect(updateScore).toHaveBeenCalledTimes(1);
-});
+  it('handle first player first ball call "updateScore" prop on button click', () => {
+    const updateScore = jest.fn();
+    const button = shallow((<FirstPlayer updateScore={updateScore} />));
+    button.find('.player1').props().onClick();
+    expect(updateScore).toHaveBeenCalled();
+    expect(updateScore).toHaveBeenCalledTimes(1);
+  });
 
-it('handle second player first ball call "updateScore" prop on button click', () => {
-  const updateScore = jest.fn();
-  const button = shallow((<SecondPlayer updateScore={updateScore} />));
-  button.find('.player2').props().onClick();
-  expect(updateScore).toHaveBeenCalled();
-  expect(updateScore).toHaveBeenCalledTimes(1);
-});
+  it('handle second player first ball call "updateScore" prop on button click', () => {
+    const updateScore = jest.fn();
+    const button = shallow((<SecondPlayer updateScore={updateScore} />));
+    button.find('.player2').props().onClick();
+    expect(updateScore).toHaveBeenCalled();
+    expect(updateScore).toHaveBeenCalledTimes(1);
+  });
+
+  it('handle the win scenario', () => {
+    const updateScore = jest.fn();
+    const points = [0, 15, 30, 40, 'won'];
+    const button = shallow((<FirstPlayer updateScore={updateScore} />));
+    var score = shallow((<ScoreBoard />));
+    var status = 0
+    points.map((data, id) => {
+      if (id > 0) {
+        button.find('.player1').props().onClick()
+        status = points[id]
+      }
+    })
+    status = status == 'won' ? 1 : 0
+    expect(updateScore).toHaveBeenCalledTimes(4)
+    score.setProps({ firstPlayer: status });
+    expect(score.props().children[1].props.children[1].props.children).toEqual(1);
+  });
 
 });
