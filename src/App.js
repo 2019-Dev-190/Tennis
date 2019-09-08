@@ -101,7 +101,7 @@ export default class App extends Component {
 
 
   render() {
-    const { firstPlayer, secondPlayer, won, points } = this.state;
+    const { firstPlayer, secondPlayer, won, deuce, points } = this.state;
 
     return (
       <div className="App">
@@ -115,6 +115,10 @@ export default class App extends Component {
             <FirstPlayer updateScore={this.updateScorePlayer} />
             <SecondPlayer updateScore={this.updateScorePlayer} />
           </div>
+          {
+            deuce && !won &&
+            <h1>Deuce!</h1>
+          }
           {
             won &&
             <h1>Player {won} Won!</h1>
