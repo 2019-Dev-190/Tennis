@@ -5,6 +5,7 @@ import { shallow } from 'enzyme';
 import { configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import FirstPlayer from './components/firstPlayer/firstPlayer';
+import SecondPlayer from './components/secondPlayer/secondPlayer';
 
 configure({ adapter: new Adapter() });
 
@@ -20,6 +21,14 @@ it('handle first player first ball call "updateScore" prop on button click', () 
   const updateScore = jest.fn();
   const button = shallow((<FirstPlayer updateScore={updateScore} />));
   button.find('.player1').props().onClick();
+  expect(updateScore).toHaveBeenCalled();
+  expect(updateScore).toHaveBeenCalledTimes(1);
+});
+
+it('handle second player first ball call "updateScore" prop on button click', () => {
+  const updateScore = jest.fn();
+  const button = shallow((<SecondPlayer updateScore={updateScore} />));
+  button.find('.player2').props().onClick();
   expect(updateScore).toHaveBeenCalled();
   expect(updateScore).toHaveBeenCalledTimes(1);
 });

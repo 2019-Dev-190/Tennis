@@ -56,6 +56,39 @@ export default class App extends Component {
         }
       }
   }
+  if(player === 2 && !this.state.won)
+  {
+      const secondPlayer = this.state.secondPlayer + 1;
+      if(gameBall && !firstPlayerAdvantage)
+      {
+        this.setState({won: 2});
+      }
+
+      if (deuce) {
+        if (secondPlayerAdvantage) {
+          this.setState({
+            gameBall: true
+          });
+        } else {
+          this.setState({
+            secondPlayerAdvantage: true,
+            firstPlayerAdvantage: false,
+          });
+        }
+      } else {
+        if (points[secondPlayer] === 'won') {
+          this.setState({ won: 2 });
+        } else if (points[secondPlayer] === 40 && points[firstPlayer] === 40) {
+          this.setState({
+            deuce: true,
+            secondPlayerAdvantage: true,
+            secondPlayer,
+          });
+        } else {
+          this.setState({ secondPlayer });
+        }
+      }
+  }
   }
 
 
