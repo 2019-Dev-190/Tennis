@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScoreBoard renders first player score correctly 1`] = `
+<div
+  className="scoreBoard"
+>
+  <h3>
+    scoreBoard
+  </h3>
+  <div
+    className="playerStyles"
+  >
+    Player1: 
+    <div
+      className="scoreStyles"
+    >
+      0
+    </div>
+  </div>
+  <div
+    className="playerStyles"
+  >
+    Player2: 
+    <div
+      className="scoreStyles"
+    >
+      0
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ScoreBoard renders second player score correctly 1`] = `
+<div
+  className="scoreBoard"
+>
+  <h3>
+    scoreBoard
+  </h3>
+  <div
+    className="playerStyles"
+  >
+    Player1: 
+    <div
+      className="scoreStyles"
+    >
+      0
+    </div>
+  </div>
+  <div
+    className="playerStyles"
+  >
+    Player2: 
+    <div
+      className="scoreStyles"
+    >
+      0
+    </div>
+  </div>
+</div>
+`;
