@@ -7,6 +7,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import FirstPlayer from './components/firstPlayer/firstPlayer';
 import SecondPlayer from './components/secondPlayer/secondPlayer';
 import ScoreBoard from './components/scoreBoard/scoreBoard';
+import renderer from 'react-test-renderer';
 
 configure({ adapter: new Adapter() });
 
@@ -86,5 +87,14 @@ describe('App', () => {
 
     expect(score.props().children[1].props.children[1].props.children).toEqual(1);
   });
+
+  it('resets the game', () => {
+    const firstPlayer = 0;
+    const secondPlayer = 0;
+    const rendered = renderer.create(
+        <ScoreBoard firstPlayer={firstPlayer} secondPlayer={secondPlayer}/>
+    );
+    expect(rendered.toJSON()).toMatchSnapshot();
+});
 
 });

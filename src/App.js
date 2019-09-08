@@ -20,17 +20,26 @@ export default class App extends Component {
     };
   }
 
+  resetGame = () => {
+    this.setState({
+      firstPlayer: 0,
+      secondPlayer: 0,
+      gameBall: false,
+      firstPlayerAdvantage: false,
+      secondPlayerAdvantage: false,
+      won: 0,
+      deuce: false,
+    })
+  }
 
   updateScorePlayer = (player) => {
     const { deuce, gameBall, firstPlayerAdvantage, secondPlayerAdvantage, firstPlayer, secondPlayer, points } = this.state;
 
-    if(player === 1 && !this.state.won)
-    {
+    if (player === 1 && !this.state.won) {
       const firstPlayer = this.state.firstPlayer + 1;
 
-      if(gameBall && !secondPlayerAdvantage)
-      {
-        this.setState({won: 1});
+      if (gameBall && !secondPlayerAdvantage) {
+        this.setState({ won: 1 });
       }
       if (deuce) {
         if (firstPlayerAdvantage) {
@@ -55,13 +64,11 @@ export default class App extends Component {
           this.setState({ firstPlayer });
         }
       }
-  }
-  if(player === 2 && !this.state.won)
-  {
+    }
+    if (player === 2 && !this.state.won) {
       const secondPlayer = this.state.secondPlayer + 1;
-      if(gameBall && !firstPlayerAdvantage)
-      {
-        this.setState({won: 2});
+      if (gameBall && !firstPlayerAdvantage) {
+        this.setState({ won: 2 });
       }
 
       if (deuce) {
@@ -88,7 +95,7 @@ export default class App extends Component {
           this.setState({ secondPlayer });
         }
       }
-  }
+    }
   }
 
 
@@ -101,6 +108,7 @@ export default class App extends Component {
         <div className="tennisBg">
           <h2 className="THeading">Let's Play Tennis</h2>
           <div>
+            <button className="resetGame" onClick={this.resetGame}>Reset Game</button>
             <ScoreBoard firstPlayer={points[firstPlayer]} secondPlayer={points[secondPlayer]} />
           </div>
           <div className="playerBox">
